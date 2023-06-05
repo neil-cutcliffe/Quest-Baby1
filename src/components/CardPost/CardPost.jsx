@@ -62,7 +62,7 @@ const Image1 = styled('div', {
   alignSelf: `stretch`,
   height: `408px`,
   margin: `0px`,
-  backgroundImage: 'url(' + props.posts.card_post.source_url + ')',
+  backgroundImage: 'url(' + props.post.card_post.source_url + ')',
 }));
 
 const ExternalLink = styled('a')({
@@ -142,8 +142,8 @@ function CardPost(props) {
       </ExternalLink>
       <Content>
         <Details onClick={fns.handleDetailsClick}>
-          <Title>{"'props.posts.title.rendered"}</Title>
-          <Details1>{'props.posts.content.rendered'}</Details1>
+          <Title>{props.post.title.rendered}</Title>
+          <Details1>{props.post.content.rendered}</Details1>
         </Details>
       </Content>
     </TypeQuest>
