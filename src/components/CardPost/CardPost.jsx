@@ -14,6 +14,7 @@
 
 import React from 'react';
 import { styled } from '@mui/material/styles';
+import useCardPost from 'src/components/CardPost/useCardPost';
 
 const TypeQuest = styled('div')(({ theme }) => ({
   backgroundColor: `rgba(255, 255, 255, 1)`,
@@ -61,8 +62,13 @@ const Image1 = styled('div', {
   alignSelf: `stretch`,
   height: `408px`,
   margin: `0px`,
-  backgroundImage: 'url(' + props.posts[index].card_post.source_url + ')',
+  backgroundImage: 'url(' + props.posts.card_post.source_url + ')',
 }));
+
+const ExternalLink = styled('a')({
+  width: `390px`,
+  textDecoration: `none`,
+});
 
 const Content = styled('div')({
   display: `flex`,
@@ -88,6 +94,7 @@ const Details = styled('div')({
   boxSizing: `border-box`,
   alignSelf: `stretch`,
   margin: `0px`,
+  cursor: `pointer`,
 });
 
 const Title = styled('div')(({ theme }) => ({
@@ -124,15 +131,19 @@ const Details1 = styled('div')(({ theme }) => ({
 }));
 
 function CardPost(props) {
+  const { fns } = useCardPost(props);
+
   return (
     <TypeQuest className={props.className}>
-      <ImageFrame>
-        <Image1 props={props}></Image1>
-      </ImageFrame>
+      <ExternalLink href={props.posts.card_post.source_url}>
+        <ImageFrame>
+          <Image1 props={props}></Image1>
+        </ImageFrame>
+      </ExternalLink>
       <Content>
-        <Details>
-          <Title>{"'props.posts[index].title.rendered"}</Title>
-          <Details1>{'props.posts[index].content.rendered'}</Details1>
+        <Details onClick={fns.handleDetailsClick}>
+          <Title>{"'props.posts.title.rendered"}</Title>
+          <Details1>{'props.posts.content.rendered'}</Details1>
         </Details>
       </Content>
     </TypeQuest>
