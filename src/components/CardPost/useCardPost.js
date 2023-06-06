@@ -13,10 +13,11 @@
 
 import React from 'react';
 const useCardPost = (props) => {
+  const getBackgroundImage = () => {};
   const data = {};
   const handleDetailsClick = () => {};
 
-  const fns = { handleDetailsClick };
+  const fns = { handleDetailsClick ,getBackgroundImage};
 
   return { data, fns };
 };

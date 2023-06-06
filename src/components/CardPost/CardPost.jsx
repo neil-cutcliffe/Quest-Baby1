@@ -47,8 +47,8 @@ const ImageFrame = styled('div')({
 });
 
 const Image1 = styled('div', {
-  shouldForwardProp: (prop) => !['props'].includes(prop.toString()),
-})(({ props }) => ({
+  shouldForwardProp: (prop) => !['fns'].includes(prop.toString()),
+})(({ fns }) => ({
   backgroundPosition: `center`,
   backgroundSize: `cover`,
   backgroundRepeat: `no-repeat`,
@@ -62,12 +62,12 @@ const Image1 = styled('div', {
   alignSelf: `stretch`,
   height: `408px`,
   margin: `0px`,
-  backgroundImage: 'url(' + props.post.card_post.source_url + ')',
+  backgroundImage: fns.getBackgroundImage,
 }));
 
 const ExternalLink = styled('a')({
-  width: `390px`,
   textDecoration: `none`,
+  width: `100%`,
 });
 
 const Content = styled('div')({
@@ -135,11 +135,11 @@ function CardPost(props) {
 
   return (
     <TypeQuest className={props.className}>
-      <ExternalLink href={props.posts.card_post.source_url}>
-        <ImageFrame>
-          <Image1 props={props}></Image1>
-        </ImageFrame>
-      </ExternalLink>
+      <ImageFrame>
+        <ExternalLink href={props.posts.card_post.source_url}>
+          <Image1 fns={fns}></Image1>
+        </ExternalLink>
+      </ImageFrame>
       <Content>
         <Details onClick={fns.handleDetailsClick}>
           <Title>{props.post.title.rendered}</Title>
