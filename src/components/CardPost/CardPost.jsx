@@ -65,6 +65,11 @@ const Image1 = styled('div', {
   backgroundImage: data.backgroundImage,
 }));
 
+const ExternalLink = styled('a')({
+  textDecoration: `none`,
+  width: `100%`,
+});
+
 const Content = styled('div')({
   display: `flex`,
   position: `relative`,
@@ -130,7 +135,9 @@ function CardPost(props) {
   return (
     <TypeQuest className={props.className}>
       <ImageFrame>
-        <Image1 data={data}></Image1>
+        <ExternalLink href={data.imageLink}>
+          <Image1 data={data}></Image1>
+        </ExternalLink>
       </ImageFrame>
       <Content>
         <Details>
