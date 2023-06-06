@@ -40,7 +40,7 @@ const ImageFrame = styled('div')({
   flexDirection: `column`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
-  padding: `0px 0px 10px 0px`,
+  padding: `0px`,
   boxSizing: `border-box`,
   alignSelf: `stretch`,
   margin: `0px`,
@@ -52,7 +52,7 @@ const Image1 = styled('div', {
   backgroundPosition: `center`,
   backgroundSize: `cover`,
   backgroundRepeat: `no-repeat`,
-  borderRadius: `8px`,
+  borderRadius: `12px`,
   display: `flex`,
   position: `relative`,
   isolation: `isolate`,
@@ -60,7 +60,7 @@ const Image1 = styled('div', {
   justifyContent: `center`,
   alignItems: `center`,
   alignSelf: `stretch`,
-  height: `408px`,
+  height: `418px`,
   margin: `0px`,
   backgroundImage: fns.getBackgroundImage,
 }));
@@ -77,7 +77,7 @@ const Content = styled('div')({
   flexDirection: `column`,
   justifyContent: `flex-start`,
   alignItems: `flex-start`,
-  padding: `14px 20px 24px 10px`,
+  padding: `8px 14px 24px 10px`,
   boxSizing: `border-box`,
   alignSelf: `stretch`,
   margin: `0px`,
@@ -94,7 +94,6 @@ const Details = styled('div')({
   boxSizing: `border-box`,
   alignSelf: `stretch`,
   margin: `0px`,
-  cursor: `pointer`,
 });
 
 const Title = styled('div')(({ theme }) => ({
@@ -136,14 +135,14 @@ function CardPost(props) {
   return (
     <TypeQuest className={props.className}>
       <ImageFrame>
-        <ExternalLink href={props.posts.card_post.source_url}>
+        <ExternalLink href={fns.getImageLink}>
           <Image1 fns={fns}></Image1>
         </ExternalLink>
       </ImageFrame>
       <Content>
-        <Details onClick={fns.handleDetailsClick}>
-          <Title>{props.post.title.rendered}</Title>
-          <Details1>{props.post.content.rendered}</Details1>
+        <Details>
+          <Title>{fns.getTitle}</Title>
+          <Details1>{fns.getDetails}</Details1>
         </Details>
       </Content>
     </TypeQuest>
